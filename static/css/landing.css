@@ -8,6 +8,13 @@
 .bmd-form-group [class*=" bmd-label"], .bmd-form-group [class^=bmd-label] {
     position: relative;
 }
+.custom-select.is-invalid:focus, .form-control.is-invalid:focus, .was-validated .custom-select:invalid:focus, .was-validated .form-control:invalid:focus {
+    box-shadow: none;
+}
+
+.custom-select.is-valid:focus, .form-control.is-valid:focus, .was-validated .custom-select:valid:focus, .was-validated .form-control:valid:focus {
+    box-shadow: none;
+}
 
 .w-150-px{
     width: 150px;
@@ -23,4 +30,8 @@
 
 .w-300-px{
     width: 300px;
+}
+
+.hidden{
+    display:none;
 }

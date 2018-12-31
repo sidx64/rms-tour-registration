@@ -40,26 +40,11 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-
                 <li class="nav-item">
                     <a class="nav-link" rel="tooltip" title="" data-placement="bottom"
-                       href="https://twitter.com/CreativeTim" target="_blank"
+                       href="#" target="_blank"
                        data-original-title="Follow us on Twitter">
                         <i class="fa fa-twitter"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="" data-placement="bottom"
-                       href="https://www.facebook.com/CreativeTim" target="_blank"
-                       data-original-title="Like us on Facebook">
-                        <i class="fa fa-facebook-square"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="" data-placement="bottom"
-                       href="https://www.instagram.com/CreativeTimOfficial" target="_blank"
-                       data-original-title="Follow us on Instagram">
-                        <i class="fa fa-instagram"></i>
                     </a>
                 </li>
             </ul>
@@ -110,55 +95,72 @@
                         confirmation email asking you to verify your email ID. On successful verification, you will
                         receive a final email, completing the registration process.
                     </h4>
-                    <form class="contact-form mt-4 pt-4">
+                    <form class="needs-validation contact-form mt-4 pt-4" novalidate>
                         <div class="row">
                             <div class="col-md-12">
                                 <label class="bmd-label-floating">You are a</label><br/>
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button id="student" type="button" class="btn btn-secondary w-150-px">Student</button>
-                                    <button id="professional" type="button" class="btn btn-secondary w-150-px">Professional</button>
+                                    <button id="student" type="button" class="btn btn-secondary w-150-px">
+                                        Student
+                                    </button>
+                                    <button id="professional" type="button" class="btn btn-secondary w-150-px">
+                                        Professional
+                                    </button>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Your First Name</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" required>
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="invalid-feedback">This is a required field.</div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Your Last Name</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" required>
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="invalid-feedback">This is a required field.</div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Your Email ID</label>
-                                    <input type="email" class="form-control">
+                                    <input type="email" class="form-control" required>
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="invalid-feedback">Please provide a valid email ID.</div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Your Mobile Number</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" required>
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="invalid-feedback">Please enter a valid mobile number.</div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="bmd-label-floating">Organization</label>
-                                    <input type="text" class="form-control">
+                                    <label id="organization" class="bmd-label-floating">Name of your
+                                        organization</label>
+                                    <input type="text" class="form-control" required>
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="invalid-feedback">This is a required field.</div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="bmd-label-floating">Designation</label>
-                                    <input type="text" class="form-control">
+                                    <label id="designation" class="bmd-label-floating">Your designation</label>
+                                    <input type="text" class="form-control" required>
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="invalid-feedback">This is a required field.</div>
                                 </div>
                             </div>
 
                         </div>
-                        <div class="row">
+                        <div class="row mt-4">
                             <div class="col-md-4 ml-auto mr-auto text-center">
                                 <button class="btn btn-primary btn-raised font-weight-bold">
                                     Submit
@@ -171,6 +173,23 @@
         </div>
     </div>
 </div>
+
+<div class="main main-raised hidden">
+    <div class="container">
+        <div class="section text-center">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto">
+                    <h2 class="title">Thank you for registering!</h2>
+                    <h4 class="text-center description">
+                        You will have received an email asking for confirmation. Please log on to your email inbox and
+                        click on the verification link to finish the registration process.
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <footer class="footer footer-default">
     <div class="container">
         <nav class="float-left">
@@ -182,7 +201,6 @@
                 </li>
             </ul>
         </nav>
-
     </div>
 </footer>
 <!--   Core JS Files   -->
