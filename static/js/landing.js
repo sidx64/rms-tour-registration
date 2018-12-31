@@ -23,6 +23,8 @@ $(document).ready(function () {
             .removeClass("btn-secondary")
             .addClass("btn-secondary");
 
+        $(".formComponents").show(1000);
+
         $("#organization").text("Name of your college");
         $("#designation").text("College department");
 
@@ -64,6 +66,7 @@ window.addEventListener('load', function () {
                 event.stopPropagation();
             }
             form.classList.add('was-validated');
+
         }, false);
     });
 }, false);
