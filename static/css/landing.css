@@ -1,0 +1,26 @@
+.bodyImage{
+    background: url('../images/rms.jpg') no-repeat fixed;
+    /*background-size: cover;*/
+    /*opacity: 0.2;*/
+    /*filter: alpha(opacity=80);*/
+}
+
+.bmd-form-group [class*=" bmd-label"], .bmd-form-group [class^=bmd-label] {
+    position: relative;
+}
+
+.w-150-px{
+    width: 150px;
+}
+
+.w-200-px{
+    width: 200px;
+}
+
+.w-250-px{
+    width: 250px;
+}
+
+.w-300-px{
+    width: 300px;
+}
