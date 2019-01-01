@@ -35,3 +35,7 @@
 .hidden{
     display:none;
 }
+
+.top-pad{
+    margin-top:20%;
+}

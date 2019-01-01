@@ -11,6 +11,15 @@ var BACKEND_URL = "http://localhost:9000/",
 
 $(document).ready(function () {
 
+    // Show basic divs & hide no-js div
+    $("#noJSDiv").hide();
+
+    setTimeout(function () {
+        $("#mainDiv").show();
+        $("#formDataDiv").show();
+    }, 500);
+
+
     // $("#formSubmit").on('click', function () {
     //     formSubmit();
     // });
