@@ -106,38 +106,45 @@ function formSubmit() {
     console.log("org/college: " + org);
     console.log("title/dept: " + title);
 
-    let data = {
-        "fname": fname,
-        "lname": lname,
-        "email_id": mail,
-        "mobile_number": contact,
-        "designation": title,
-        "organization": org,
-        "is_student": state.student,
-    };
+    if (state.clicked === false) {
+        toastr.error("Please Select Attendee Type : Student or Professional");
+    } else {
+        let data = {
+            "fname": fname,
+            "lname": lname,
+            "email_id": mail,
+            "mobile_number": contact,
+            "designation": title,
+            "organization": org,
+            "is_student": state.student,
+        };
 
-    $.ajax({
-        type: 'POST',
-        url: BACKEND_URL + 'api/register/',
-        data: data,
-        dataType: "json",
-        success: function (data) {
+        $.ajax({
+            type: 'POST',
+            url: BACKEND_URL + 'api/register/',
+            data: data,
+            dataType: "json",
+            success: function (data) {
 
-            toastr.success("Registration Form Successfully Submitted");
+                toastr.success("Registration Form Successfully Submitted");
 
-            // Hide pending div and show granted div
-            $("#formDataDiv").hide();
+                // Hide pending div and show granted div
+                $("#formDataDiv").hide();
+                $("#pageHeader").hide();
 
-            setTimeout(function () {
-                $("#FormSubmissionCompleted").fadeIn(500);
-            }, 1000);
+                setTimeout(function () {
+                    $("#postSubmitDiv").fadeIn(500);
+                    $("#FormSubmissionCompleted").fadeIn(500);
+                }, 500);
 
-        },
-        error: function (data) {
-            toastr.error(data.responseText);
+            },
+            error: function (data) {
+                toastr.error(data.responseText);
 
-        }
-    });
+            }
+        });
+    }
+
 
 }
 

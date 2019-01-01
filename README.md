@@ -17,7 +17,10 @@ verification, the user is notified via a final email.
 - Django 2.1.4
 - PostgreSQL
 
-### Theme License
+### Project License
+GNU GPL v3 License - See LICENSE file
+
+### UI Theme License
   MIT Licensed theme from [Creative Tims](https://www.creative-tim.com/product/material-kit)
 
   MIT License
