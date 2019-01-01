@@ -88,6 +88,21 @@ def email_confirmation(request , code=None):
             RMSIndia2019.objects.filter(verification_code=code).update(is_verified=True ,
                                                                        verification_time=datetime.now() ,
                                                                        modified_datetime=datetime.now())
+
+            to_addr = RMSIndia2019.objects.filter(verification_code=code).get().email_id
+            body = """ 
+                            Greetings!
+
+                            You have successfully verified your email ID. 
+                            Thank you for registering for the event. 
+                             
+                            - Team Name
+
+                            P.S.: If you did not register for this event, please ignore this email. 
+                            """
+            subject = "RMS tour of 2019 - Confirm your registration"
+
+            send_email(config.username , config.password , to_addr , body , subject)
             return Response("Confirmed Successfully" ,
                             status=status.HTTP_202_ACCEPTED)
 
