@@ -4,6 +4,8 @@ from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 from registration.registrationapi.serializers import RMSIndia2019Serializer
 from registration.models import RMSIndia2019
+from mailCode import send_email
+import config
 
 
 @csrf_exempt
@@ -37,12 +39,31 @@ def create_profile(request):
         check_email = RMSIndia2019.objects.filter(email_id=data['email_id'])
 
         if check_email.exists():
-            return Response("This is email is already being used for another user, please change your email ID" ,
+            return Response("This is email is already being used for another user,"
+                            " please change your email ID" ,
                             status=status.HTTP_406_NOT_ACCEPTABLE)
 
         serializer = RMSIndia2019Serializer(data=record)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
+
+            code = "testing code"
+            to_addr = data['email_id']
+            body = """ 
+                Greetings!
+
+                You are receiving this email because you just registered for the RMS Tour of India 2019 Event. 
+                To complete this registration, please click on the link provided below: \n
+                """ + code + """ 
+                Thank you! 
+                - Team Name
+
+                P.S.: If you did not register for this event, please ignore this email. 
+                """
+            subject = "test"
+
+            send_email(config.username , config.password , to_addr , body, subject)
+
             return Response(serializer.data ,
                             status=status.HTTP_201_CREATED)
         else:
