@@ -8,3 +8,6 @@
 out
 gen
 venv/
+/config.py
+db.sqlite3
+
