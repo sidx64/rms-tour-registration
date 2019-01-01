@@ -1,12 +1,19 @@
-$(document).ready(function () {
+"use strict";
 
-    // System State
-    let state = {
+var BACKEND_URL = "http://localhost:9000/",
+    state = {
 
         "student": false,
         "clicked": false,
 
     };
+
+
+$(document).ready(function () {
+
+    // $("#formSubmit").on('click', function () {
+    //     formSubmit();
+    // });
 
     $("#student").on('click', function () {
 
@@ -61,12 +68,95 @@ window.addEventListener('load', function () {
     // Loop over them and prevent submission
     var validation = Array.prototype.filter.call(forms, function (form) {
         form.addEventListener('submit', function (event) {
+
+            event.preventDefault();
+
             if (form.checkValidity() === false) {
                 event.preventDefault();
                 event.stopPropagation();
+            } else {
+                console.log("Running");
+                formSubmit();
             }
             form.classList.add('was-validated');
+
 
         }, false);
     });
 }, false);
+
+
+// Submit code
+function formSubmit() {
+
+    // Collect Data
+
+    let fname = $("#fname").val(),
+        lname = $("#lname").val(),
+        mail = $("#mail").val(),
+        contact = $("#contact").val(),
+        org = $("#org").val(),
+        title = $("#title").val();
+
+    console.log("fname: " + fname);
+    console.log("lname: " + lname);
+    console.log("email: " + mail);
+    console.log("contact: " + contact);
+    console.log("student: " + state.student);
+    console.log("org/college: " + org);
+    console.log("title/dept: " + title);
+
+    let data = {
+        "fname": fname,
+        "lname": lname,
+        "email_id": mail,
+        "mobile_number": contact,
+        "designation": title,
+        "organization": org,
+        "is_student": state.student,
+    };
+
+    $.ajax({
+        type: 'POST',
+        url: BACKEND_URL + 'api/register/',
+        data: data,
+        dataType: "json",
+        success: function (data) {
+
+            toastr.success("Registration Form Successfully Submitted");
+
+            // Hide pending div and show granted div
+            $("#formDataDiv").hide();
+
+            setTimeout(function () {
+                $("#FormSubmissionCompleted").fadeIn(500);
+            }, 1000);
+
+        },
+        error: function (data) {
+            toastr.error(data.responseText);
+
+        }
+    });
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
