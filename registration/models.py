@@ -6,7 +6,7 @@ from django.utils.encoding import python_2_unicode_compatible
 class RMSIndia2019(models.Model):
     fname = models.CharField(max_length=255, blank=False, null=False)
     lname = models.CharField(max_length=255, blank=False, null=False)
-    email_id = models.CharField(max_length=255, blank=False, null=False)
+    email_id = models.EmailField(max_length=255, blank=False, null=False)
     mobile_number = models.CharField(max_length=255, blank=False, null=False)
     designation = models.CharField(max_length=255, blank=False, null=False)
     organization = models.CharField(max_length=255, blank=False, null=False)
