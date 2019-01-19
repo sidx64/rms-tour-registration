@@ -21,12 +21,12 @@ def create_profile(request):
 
     try:
         data = request.data
-        post_data_list = ['fname' , 'lname' , 'email_id' , 'designation' , 'mobile_number' , 'is_student' ,
-                          'organization' , ]
+        post_data_list = ['fname', 'lname', 'email_id', 'designation', 'mobile_number', 'is_student',
+                          'organization', ]
 
         for post_data in post_data_list:
             if post_data not in data:
-                return Response(post_data + ' ' + 'information is missing' ,
+                return Response(post_data + ' ' + 'information is missing',
                                 status=status.HTTP_406_NOT_ACCEPTABLE)
 
         record = dict()
@@ -44,7 +44,7 @@ def create_profile(request):
 
         if check_email.exists():
             return Response("This is email is already being used for another user,"
-                            " please change your email ID" ,
+                            " please change your email ID",
                             status=status.HTTP_406_NOT_ACCEPTABLE)
 
         serializer = RMSIndia2019Serializer(data=record)
@@ -66,27 +66,27 @@ def create_profile(request):
                 """
             subject = "RMS tour of 2019 - Confirm your registration"
 
-            send_email(config.username , config.password , to_addr , body , subject)
+            send_email(config.username, config.password, to_addr, body, subject)
 
-            return Response(serializer.data ,
+            return Response(serializer.data,
                             status=status.HTTP_201_CREATED)
         else:
-            return Response(serializer.errors ,
+            return Response(serializer.errors,
                             status=status.HTTP_400_BAD_REQUEST)
 
     except Exception as e:
-        print("exception" , e)
-        return Response("exception" ,
+        print("exception", e)
+        return Response("exception",
                         status=status.HTTP_417_EXPECTATION_FAILED)
 
 
-@api_view(['GET' , 'POST'])
-def email_confirmation(request , code=None):
+@api_view(['GET', 'POST'])
+def email_confirmation(request, code=None):
     try:
-        print("code" , code)
+        print("code", code)
         if RMSIndia2019.objects.filter(verification_code=code).exists():
-            RMSIndia2019.objects.filter(verification_code=code).update(is_verified=True ,
-                                                                       verification_time=datetime.now() ,
+            RMSIndia2019.objects.filter(verification_code=code).update(is_verified=True,
+                                                                       verification_time=datetime.now(),
                                                                        modified_datetime=datetime.now())
 
             to_addr = RMSIndia2019.objects.filter(verification_code=code).get().email_id
@@ -102,14 +102,14 @@ def email_confirmation(request , code=None):
                             """
             subject = "RMS tour of 2019 - Confirm your registration"
 
-            send_email(config.username , config.password , to_addr , body , subject)
-            return Response("Confirmed Successfully" ,
+            send_email(config.username, config.password, to_addr, body, subject)
+            return Response("Confirmed Successfully",
                             status=status.HTTP_202_ACCEPTED)
 
         else:
-            return Response("Invalid URL" ,
+            return Response("Invalid URL",
                             status=status.HTTP_401_UNAUTHORIZED)
     except Exception as e:
-        print("exception" , e)
-        return Response("exception" ,
+        print("exception", e)
+        return Response("exception",
                         status=status.HTTP_417_EXPECTATION_FAILED)
